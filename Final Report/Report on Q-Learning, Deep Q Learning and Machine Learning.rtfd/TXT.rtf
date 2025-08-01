@@ -1,0 +1,214 @@
+{\rtf1\ansi\ansicpg950\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 SFProText-Regular;\f1\fnil\fcharset0 SFProText-Bold;\f2\fnil\fcharset0 SFProText-BoldItalic;
+\f3\fnil\fcharset0 SFProText-RegularItalic;\f4\fnil\fcharset0 AppleColorEmoji;\f5\fnil\fcharset0 Menlo-Regular;
+\f6\froman\fcharset0 TimesNewRomanPSMT;\f7\froman\fcharset0 Times-Italic;\f8\froman\fcharset0 TimesNewRomanPS-ItalicMT;
+}
+{\colortbl;\red255\green255\blue255;\red11\green11\blue11;}
+{\*\expandedcolortbl;;\cspthree\c4627\c4627\c4627;}
+{\info
+{\author Nok Yin Lim}
+{\*\copyright \uc0\u169  2025 Nok Yin Lim. All Rights Reserved}}\margl1440\margr1440\vieww8140\viewh16380\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf2 \
+
+\f1\b ProEd Computer Science\
+
+\f2\i\fs32 Report on Q-Learning, Neural Networks & AI/ML
+\f0\i0\b0 \
+
+\fs20 report title: 
+\f1\b I spent 1 day of my life on this stupid crying baby
+\f0\b0 \
+
+\fs16 \
+This is agent and he\'92s stupid.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl336\slmult1\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic 截圖 2025-07-30 下午4.09.45.png \width1320 \height1320 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}�}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl336\slmult1\pardirnatural\partightenfactor0
+\cf2 \
+
+\f3\i (For now)
+\f0\i0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+\cf2 \
+We have to train him first.\
+\
+\pard\pardeftab720\sl288\slmult1\partightenfactor0
+\cf2 The agent learns to navigate the environment using Q-Learning. The agent receives rewards for reaching the present and penalties for falling into pools. The Q-values are updated based on the agent's actions and the rewards received, allowing it to learn the optimal path over time.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+\cf2 \
+The agent learns to navigate the environment using Q-Learning. Essentially, we\'92re teaching a baby how to walk across the lake. And the first step is to throw him out there, abandon him and hope for the best. 
+\f4 \uc0\u55358 \u56606 
+\f0 \
+\
+Oh look, he\'92s doing\'85 horribly.\
+\
+The agent receives rewards for reaching the present and penalties for falling into pools. The Q-values are updated based on the agent's actions and the rewards received, allowing it to learn the optimal path over time.\
+\
+Slowly, (but surely), the agent gains\'85 
+\f3\i awareness
+\f0\i0 .\
+\
+Instead of being a robot that runs 
+\f5 random.randint(1, 4)
+\f0  every move, it is now: a robot that runs 
+\f5 random.randint(1, 4)
+\f0  
+\f3\i almost
+\f0\i0  every move, due to the decreasing 
+\f3\i \uc0\u949 psilon
+\f0\i0 . Except a few, where it uses what it knows about its future experiences (which it has stored within its Q-table), and chooses the best option that it has done before.\
+\
+Now, it\'92s actually learning. Our agent uses what it knows (the current state, the action taken and the reward from that action) to create a large (not actually 
+\f3\i that
+\f0\i0  large) database of which moves led to the best results. \
+\
+And from here, practice makes perfect, and we force our agent to do the same maze over and over again, breaking some labor laws, workers\'92 rights laws, some people\'92s morals, but, saving the most important part for last, we have our trained agent.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf2 Hyperparameters
+\f0\b0 \
+There are certain values, or hyperparameters, that can be tweaked to alter the learning of the agent.\
+\
+Learning Rate (
+\f6 \uc0\u945 
+\f0 ) defines how quickly the agent accepts new information, dictating how 
+\f3\i trusting
+\f0\i0  it is of new information it receives.\
+\
+Discount Rate (
+\f6 \uc0\u947 
+\f0 ) defines how much the agent values long-term reward over short-term rewards. For us, this is set pretty high as we want the agent to prioritize the long-term goal of reaching the present at the end.\
+\
+Epsilon Curve defines how the 
+\f3\i \uc0\u949 -
+\f0\i0 value changes over time. A \uc0\u949 -value of 1 means the agent moves completely randomly, and 0 means it only refers to its Q-table. Personally, I set the \u949 -value to be: 
+\f6 \uc0\u949 
+\fs10 \sub n
+\fs16 \nosupersub  = 0.99
+\fs10 \super n
+\f0\fs16 \nosupersub \
+\
+The Reward Function defines how the agent is rewarded for every move. You can train the agent to have different goals by altering this function.\
+This is set to: +2 for reaching the end, since we want to reward it highly for winning the maze; -2 for walking into a pool, as dying is quite unhealthy (and doesn\'92t contribute to our goal); and a smaller bonus for moving closer to the goal, paired with a \'91time penalty\'92 which constantly reduces its score. (I found that this was necessary as otherwise, the agent would simply move in between two spots, increasing its score infinitely). \
+\
+
+\f1\b Q-Tables, States and Actions
+\f0\b0 \
+Q-Tables represent all possible states and actions, stored within a table. Since we are dealing with one-dimensional states and actions, we can have a 2-dimensional table matching all possible states with all possible actions.\
+\
+This is where our agent stores its own \'91memory\'92, remembering all of its previous actions, how they ended up and is where the agent also chooses its next action.\
+\
+I also did some research onto deep q-learning (but I couldn\'92t get PyTorch working on my laptop)\
+Like seriously, why do different people and websites refer to conda-forge::py-box2d, py-box2d, gymnasium[box2d], gym[box2d], box2d, and \'93gymnasium[box2d]\'94??? But only one (or maybe a few) of them works???\
+\
+So I guess I\'92ll just yap about some stuff. 
+\f1\b The rest of this is not necessary to read
+\f0\b0  (its very boring). its just my current understanding of how these things work.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+\cf2 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+\cf2 Deep Q-Learning is a type of Q-Learning that uses Neural Networks instead of a Q-Table, which can approximate Q-values for different states and actions. The benefit of this is since this is a neural network, it can accept continuous states as input, and output any value between 0 and 1. Additionally, this allows us to work with high-dimensional data, as we can essentially use as many neurons as we want for our input, and as many as we want for our output.\
+\
+Goal of the Neural Network: 
+\f3\i a function, 
+\f7 Q*
+\f3  that allows us to determine how good an action is in a certain situation.
+\f0\i0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+
+\f5 \cf2 {{\NeXTGraphic 截圖 2025-07-30 下午2.29.58.png \width3900 \height600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}�}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf2 \
+\
+Neural Networks are good 
+\f3\i approximations
+\f0\i0  of functions. This means that although we don\'92t have access to the exact function 
+\f8\i Q*
+\f0\i0 , we can use a neural network that approximates this function.\
+\
+So, how can we create the network that can approximate this function in the first place?\
+\
+The 
+\f1\b \ul Bellman Equation
+\f0\b0 \ulnone , states that the 
+\f1\b value, 
+\f0\b0 or
+\f1\b  reward 
+\f0\b0 of an action
+\f1\b  
+\f0\b0 (taken at a certain state) can be expressed as some function of the 
+\f1\b immediate
+\f0\b0  reward, and the 
+\f1\b expected 
+\f0\b0 reward of the 
+\f1\b next state we end up in 
+\f0\b0 (this value is dependent on gamma, or the discount rate).\
+\
+All Q-functions, obey this law. So, this allows us to find the 
+\f1\b difference 
+\f0\b0 between
+\f1\b  
+\f2\i our
+\f1\i0  version of the Q-function, 
+\f0\b0 and
+\f1\b  the actual Q-function
+\f0\b0  we are trying to find.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+\cf2 The actual Q-function? How do we know that? Isn\'92t this what we\'92re trying to find?\
+Actually, we 
+\f3\i don\'92t
+\f0\i0  know the actual Q-function. That\'92s why we need to approximate it. However, the Bellman Equation allows us to create a \'93target point\'94, that 
+\f3\i our
+\f0\i0  Q-function is constantly working towards.\
+\
+For any state-action pair (s, a); a target value can be create through:\
+The immediate reward, 
+\f8\i R
+\f0\i0 , we get from taking 
+\f8\i a
+\f0\i0  in 
+\f8\i s
+\f0\i0 , and;\
+The maximum Q-value for the preceding state, 
+\f8\i s\'92
+\f0\i0 \
+Thus,\
+
+\f6 target = r + \uc0\u947  * max(Q(s', a'))
+\f0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+\cf2 \
+Finally, the comparison between them can be made between our current network\'92s prediction, 
+\f6 Q(s, a)
+\f0  and the 
+\f8\i target
+\f0\i0 , calculated above.\
+\
+An equation calculating the difference between the two is called the 
+\f1\b \ul Huber Loss
+\f0\b0 \ulnone .\
+\
+But first, why not just use the \'91normal\'92 loss functions? Firstly, MSE is limited by how large errors have disproportionate impacts. While it functions for smaller errors, extremely large values, or anomalous results have too large an impact. Similarly, MAE is not sensitive enough to small errors, which leads to slower training.\
+\
+The Huber loss fixes both of these limitations. It is similar to MSE, if the error is small, while being more similar to MAE for larger ones. This means the equation for the Huber loss consists of one equation if \uc0\u948  \u8804  1, and another otherwise.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+\cf2 {{\NeXTGraphic 截圖 2025-07-30 下午2.48.56.png \width6280 \height3160 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}�}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural\partightenfactor0
+\cf2 \
+\
+Now, once the Huber loss has been calculated, we can calculate a gradient descent: essentially, it shows us how we need to adjust each of our weights, gradually improving the network over time.\
+\
+Repeat this (many, many) times, and you have a trained network.
+\fs20 \
+\
+
+\fs32 \
+\
+\
+}
